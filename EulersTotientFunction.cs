@@ -4,7 +4,7 @@ using BaseX;
 
 namespace TotientMod
 {
-    [NodeName("Eulers Totient Function")]
+    [NodeName("Euler's Totient Function")]
     [Category(new string[] { "LogiX/Operators" })]
 
     public sealed class EulersTotientFunction : LogixNode
