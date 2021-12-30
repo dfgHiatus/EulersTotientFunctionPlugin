@@ -14,10 +14,26 @@ namespace TotientMod
 
         protected override void OnEvaluate()
         {
-            int result = 1;
-            for (int i = 2; i < input.EvaluateRaw(); i++)
-                if (MathX.GreatestCommonDivisor(i, input.EvaluateRaw()) == 1)
-                    result++;
+            int result = input.EvaluateRaw();
+            int inputCopy = input.EvaluateRaw();
+
+            for (int p = 2; p * p <= inputCopy; ++p)
+            {
+                if (inputCopy % p == 0)
+                {
+                    while (inputCopy % p == 0)
+                    {
+                        inputCopy /= p;
+                    } 
+                    result -= result / p;
+                }
+            }
+
+            if (inputCopy > 1)
+            {
+                result -= result / inputCopy;
+            }
+                
             output.Value = result;
         }
     }
